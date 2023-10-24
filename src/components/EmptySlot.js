@@ -5,9 +5,13 @@ import moleHill from '../assets/molehill.png'
 function EmptySlot(props) {
 
     useEffect(() => {
-        setTimeout(() => {
+        const rand = Math.ceil(Math.random() * 5000)
+        const timer = setTimeout(() => {
             props.setDisplayMole(true)
-        }, 5000)
+        }, rand)
+        return () => {
+            clearTimeout(timer)
+        }
     }, [])
 
     return (
